@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Election Analyzer Tool</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container my-5">
+    <h1 class="text-center fw-bold">🗳️ Election Analyzer Tool</h1>
+    <p class="text-center text-muted">Analyze sentiment and mentions for political parties based on subreddit comments</p>
+    <div id="stepOne" class="card shadow-sm p-4 mb-5">
+      <h4 class="card-title mb-3">Step 1: Select Number of Parties</h4>
+      <form id="partyCountForm">
+        <div class="mb-3">
+          <label for="numParties" class="form-label">How many parties do you want to analyze?</label>
+          <input type="number" id="numParties" class="form-control" placeholder="Enter a number (e.g., 2, 3)" min="1" max="10" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Next</button>
+      </form>
+    </div>
+
+    <div id="stepTwo" class="card shadow-sm p-4 mb-5 d-none">
+      <h4 class="card-title mb-3">Step 2: Enter Party Names</h4>
+      <form id="partyForm">
+        <div id="partyInputs" class="mb-4"></div>
+        <div class="mb-3">
+          <label for="numComments" class="form-label">Number of Comments to Fetch</label>
+          <input type="number" id="numComments" class="form-control" placeholder="Enter number of comments to fetch" required>
+        </div>
+        <div class="mb-3">
+          <label for="subreddit" class="form-label">Select Subreddit</label>
+          <select id="subreddit" class="form-select" required>
+            <option value="politics">Politics</option>
+            <option value="india">India</option>
+            <option value="worldnews">World News</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Analyze</button>
+      </form>
+    </div>
+
+    <div id="resultsSection" class="d-none">
+      <h2 class="text-center my-4">Analysis Results</h2>
+      <canvas id="barChart" class="mb-4"></canvas>
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+</body>
+</html>
